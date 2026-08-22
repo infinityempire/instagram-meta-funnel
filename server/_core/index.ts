@@ -6,6 +6,9 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
+import { getMetaConfig } from "../meta/config";
+import { logSafe } from "../meta/safeLog";
+import { handleWebhookVerify, processWebhookPayload, verifyWebhookSignature } from "../meta/webhooks";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 
@@ -31,6 +34,39 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  app.disable("x-powered-by");
+  // The raw route must be registered before generic JSON parsing. Meta signs
+  // the exact bytes of the notification body.
+  app.get("/api/meta/webhook", (req, res) => {
+    const config = getMetaConfig();
+    const result = handleWebhookVerify({
+      mode: req.query["hub.mode"] as string | undefined,
+      token: req.query["hub.verify_token"] as string | undefined,
+      challenge: req.query["hub.challenge"] as string | undefined,
+    }, config?.verifyToken);
+    res.status(result.status).type("text/plain").send(result.body);
+  });
+  app.post("/api/meta/webhook", express.raw({ type: "application/json", limit: "1mb" }), async (req, res) => {
+    const config = getMetaConfig();
+    const rawBody = Buffer.isBuffer(req.body) ? req.body : Buffer.from(req.body ?? "");
+    if (!config || !verifyWebhookSignature(rawBody, req.header("x-hub-signature-256"), config.appSecret)) {
+      res.status(401).json({ error: "Invalid signature" });
+      return;
+    }
+    res.status(200).json({ received: true });
+    let payload: unknown;
+    try {
+      payload = JSON.parse(rawBody.toString("utf8"));
+    } catch {
+      logSafe("warn", "Received non-JSON webhook body with a valid signature");
+      return;
+    }
+    try {
+      await processWebhookPayload(rawBody, payload);
+    } catch (error) {
+      logSafe("error", "Webhook processing pipeline error", error);
+    }
+  });
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));

@@ -1,0 +1,34 @@
+# Project TODO
+
+- [x] Document Meta Business Login for Instagram prerequisites, required permissions, redirect URI, and production review requirements.
+- [x] Add secure server-only environment validation for Meta App ID, App Secret, access token, verify token, Instagram professional account ID, Graph API version, and WhatsApp funnel URL.
+- [x] Create database tables for webhook events, lead deliveries, published media, insight snapshots, and operation logs.
+- [x] Add an authenticated admin-only dashboard with elegant navigation and privacy-safe status summaries.
+- [x] Implement the public Meta webhook GET verification challenge endpoint with strict verify-token comparison.
+- [x] Implement Meta webhook POST HMAC SHA-256 validation, idempotency protection, safe event logging, and rapid acknowledgement.
+- [x] Implement keyword-trigger extraction for Instagram DMs and limited-retry delivery to the configured WhatsApp funnel webhook.
+- [x] Store forwarded-lead records with timestamp, Instagram-scoped user ID, matched keyword, delivery status, and safe error summary.
+- [x] Implement Meta API client utilities with bounded retry, exponential backoff, timeouts, and secret-safe structured logs.
+- [x] Implement a manual Reels publishing flow that creates a media container, polls status_code to FINISHED, and publishes only after explicit operator action.
+- [x] Support the is_ai_generated flag in the manual Reels publishing form and in the server-side publishing request.
+- [x] Implement a manual Insights refresh flow for published posts and display reach and engagement in dashboard charts.
+- [x] Build dashboard views for webhook events, leads, published media, insight charts, and publish-operation status.
+- [ ] Write Vitest coverage for signature validation, webhook verification, keyword routing, retry limits, and publish request validation.
+- [ ] Write a README explaining official Meta setup, permissions, callback URL, secret configuration, testing, and production deployment steps.
+- [x] Verify the UI, type checks, and tests before delivery.
+- [x] Prepare a Meta account-owner checklist for converting the Instagram account to professional, creating a Meta app, and selecting Business Login for Instagram.
+- [x] Prepare a secure handoff table of required secret names, their official source, and where the owner must enter them without recording values.
+- [x] Prepare webhook verification, test-DM, lead-forwarding, publish-status, and insights acceptance scenarios for the integration test.
+- [x] Prepare a zero-budget launch and content-promotion checklist that begins only after account connection and explicit publishing approval.
+- [x] Prepare one consolidated OpenHands implementation prompt with file-level requirements, acceptance criteria, test coverage, and secret-handling rules.
+- [x] Require OpenHands to commit and push the completed implementation to a private GitHub repository without committing any secrets.
+- [ ] Provide OpenHands with a secure GitHub clone-and-push handoff that avoids embedded tokens and unavailable remote-device access.
+- [x] Review the completed OpenHands implementation for security, schema consistency, tests, and official-Meta-only behavior before configuring production secrets.
+- [x] Transfer the verified OpenHands implementation into the private kids-stories-brand-project repository and remove the source repository after confirmed migration.
+- [x] Audit the copied OpenHands Meta platform for dependency integrity, TypeScript errors, tests, secret exposure, and official-API-only behavior.
+- [x] Reconcile the standalone OpenHands database schema and deployment with the existing Manus WebDev project before applying any migration or configuring secrets.
+- [x] Integrate the verified OpenHands Meta server modules and dashboard routes into the active WebDev project while retaining Manus admin authorization.
+- [ ] Configure the official Meta app and production secrets after the owner converts @smallstories170 to a professional account.
+- [x] Add reach and engagement visualization to the active dashboard using official stored insight snapshots.
+- [x] Verify every active dashboard route in the browser after the final code state, including empty and unavailable-configuration states.
+- [x] Document the low-memory production-build verification while the standard minified build exceeds current sandbox resources.

@@ -21,15 +21,20 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, Users } from "lucide-react";
+import { BarChart3, KeyRound, LayoutDashboard, LogOut, PanelLeft, Send, Settings2, Users, Webhook } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Page 1", path: "/" },
-  { icon: Users, label: "Page 2", path: "/some-path" },
+  { icon: LayoutDashboard, label: "סקירה", path: "/" },
+  { icon: Send, label: "פרסום Reel", path: "/publish" },
+  { icon: Users, label: "לידים", path: "/leads" },
+  { icon: Webhook, label: "Webhooks", path: "/webhooks" },
+  { icon: BarChart3, label: "מדיה ותובנות", path: "/media" },
+  { icon: KeyRound, label: "מילות מפתח", path: "/keywords" },
+  { icon: Settings2, label: "הגדרות", path: "/settings" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -169,7 +174,7 @@ function DashboardLayoutContent({
               {!isCollapsed ? (
                 <div className="flex items-center gap-2 min-w-0">
                   <span className="font-semibold tracking-tight truncate">
-                    Navigation
+                    Instagram Meta Funnel
                   </span>
                 </div>
               ) : null}
