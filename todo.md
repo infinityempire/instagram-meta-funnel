@@ -29,6 +29,8 @@
 - [x] Reconcile the standalone OpenHands database schema and deployment with the existing Manus WebDev project before applying any migration or configuring secrets.
 - [x] Integrate the verified OpenHands Meta server modules and dashboard routes into the active WebDev project while retaining Manus admin authorization.
 - [ ] Configure the official Meta app and production secrets after the owner converts @smallstories170 to a professional account.
+- [ ] Guide the owner through converting @smallstories170 to a professional account and creating the official Meta app.
+- [x] Provide a detailed, account-specific Meta app creation guide with webhook and secret-entry details.
 - [x] Add active-project tests for matched-keyword lead routing and duplicate webhook suppression.
 - [x] Save a token-free GitHub handoff document for future OpenHands or terminal-agent work.
 - [x] Add reach and engagement visualization to the active dashboard using official stored insight snapshots.
