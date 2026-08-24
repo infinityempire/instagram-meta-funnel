@@ -30,6 +30,21 @@
 - [x] Integrate the verified OpenHands Meta server modules and dashboard routes into the active WebDev project while retaining Manus admin authorization.
 - [ ] Configure the official Meta app and production secrets after the owner converts @smallstories170 to a professional account.
 - [ ] Guide the owner through converting @smallstories170 to a professional account and creating the official Meta app.
+- [ ] Keep the Meta integration inactive and use manual YouTube and Instagram publishing for the children’s videos instead.
+- [ ] Evaluate an official third-party Instagram publishing service that can automate posts without the user creating a Meta developer app.
+- [ ] Set up the free Meta Business Suite path for scheduling Reels without a Meta developer app.
+- [ ] Open Meta Business Suite, create the Small Stories Facebook Page, and connect @smallstories170 after the owner signs in.
+- [ ] Create the Small Stories Facebook Page under an existing personal Facebook account instead of opening a duplicate personal profile.
+- [ ] Provide OpenHands with a safe, official-only diagnostic prompt for the blocked Instagram-to-Business-Suite connection.
+- [ ] Guide the owner through changing the exposed Facebook password and reviewing active sessions without handling credentials.
+- [ ] Resume the official Instagram-to-Small Stories Hebrew Page connection after the owner secured the Facebook account.
+- [ ] Select a no-CAPTCHA publishing workflow that avoids unsupported automation and does not require repeated browser login attempts.
+- [ ] Upload the approved Luli Moon video to YouTube Studio as a child-directed AI-assisted draft after the owner signs in.
+- [x] Prepare the approved Luli Moon video and copy-ready metadata for manual upload through the YouTube mobile app.
+- [ ] Deliver the Luli Moon video file and a copy-ready manual upload card for the YouTube mobile app.
+- [ ] Provide Claude with a safe diagnostic prompt for the Google verification block in YouTube Studio.
+- [ ] Provide OpenHands with a structured official-only diagnostic prompt for the Google verification block in YouTube Studio.
+- [ ] Verify the approved Luli Moon video and prepare its YouTube upload draft with child-directed and AI disclosure settings.
 - [x] Provide a detailed, account-specific Meta app creation guide with webhook and secret-entry details.
 - [x] Add active-project tests for matched-keyword lead routing and duplicate webhook suppression.
 - [x] Save a token-free GitHub handoff document for future OpenHands or terminal-agent work.
