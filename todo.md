@@ -70,8 +70,11 @@
 - [x] Implement `/api/youtube/oauth/callback` with strict state validation, server-side code exchange, encrypted refresh-token storage, and safe error handling.
 - [x] Implement an admin-only YouTube connection-status view without returning token or secret values.
 - [x] Add an owner-controlled disconnect flow that revokes the Google token and removes stored credentials.
-- [ ] Add tests for OAuth state validation, encrypted persistence, configuration safety, and private-only upload policy.
+- [x] Add tests for OAuth state validation, encrypted persistence, configuration safety, and private-only upload policy.
 - [x] Document the one-time owner authorization and the strictly private-only post-connection test workflow.
 - [x] Add unit tests for OAuth state validation, encrypted refresh-token storage, and configuration responses that omit secret values.
-- [ ] Document the post-authorization YouTube test-upload workflow: explicit owner approval, private visibility, Made for Kids setting, AI disclosure, and no-public-upload rule.
+- [x] Document the post-authorization YouTube test-upload workflow: explicit owner approval, private visibility, Made for Kids setting, AI disclosure, and no-public-upload rule.
 - [x] Guide the owner through changing the exposed Facebook password without requesting or handling credentials.
+- [x] Add a pure private-only YouTube upload metadata builder that enforces Made for Kids and AI disclosure without sending any upload request.
+- [x] Add a callback-level persistence test proving refresh tokens are encrypted before database storage.
+- [x] Add a callback-flow test that verifies valid state, token exchange, encrypted storage, and secret-free response behavior together.

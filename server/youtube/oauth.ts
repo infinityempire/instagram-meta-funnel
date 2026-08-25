@@ -57,6 +57,39 @@ async function exchangeAuthorizationCode(code: string) {
   return body.refresh_token;
 }
 
+export async function persistYouTubeRefreshToken(ownerOpenId: string, refreshToken: string): Promise<void> {
+  const ciphertext = encryptRefreshToken(refreshToken, getYouTubeTokenEncryptionKey());
+  await db.upsertYouTubeConnection(ownerOpenId, ciphertext);
+}
+
+export type YouTubeOAuthCallbackOutcome = "connected" | "denied" | "invalid_state" | "error";
+
+export async function processYouTubeOAuthCallback(input: {
+  state?: string;
+  expectedState?: string;
+  code?: string;
+  googleError?: string;
+}, dependencies: {
+  stateSecret: string;
+  exchangeCode: (code: string) => Promise<string>;
+  persistRefreshToken: (ownerOpenId: string, refreshToken: string) => Promise<void>;
+}): Promise<YouTubeOAuthCallbackOutcome> {
+  if (input.googleError) return "denied";
+  if (!input.state || !input.code || !input.expectedState || input.state !== input.expectedState) {
+    return "invalid_state";
+  }
+  const payload = verifyOAuthState(input.state, dependencies.stateSecret);
+  if (!payload) return "invalid_state";
+
+  try {
+    const refreshToken = await dependencies.exchangeCode(input.code);
+    await dependencies.persistRefreshToken(payload.ownerOpenId, refreshToken);
+    return "connected";
+  } catch {
+    return "error";
+  }
+}
+
 export async function disconnectYouTubeConnection(ownerOpenId: string): Promise<{ disconnected: boolean }> {
   const connection = await db.getYouTubeConnection(ownerOpenId);
   if (!connection) return { disconnected: false };
@@ -112,33 +145,34 @@ export function registerYouTubeOAuthRoutes(app: Express) {
     const expectedState = parseCookieHeader(req.headers.cookie ?? "")[STATE_COOKIE];
     res.clearCookie(STATE_COOKIE, stateCookieOptions());
 
-    if (googleError) {
+    const outcome = await processYouTubeOAuthCallback({
+      state,
+      code,
+      googleError,
+      expectedState,
+    }, {
+      stateSecret: ENV.cookieSecret,
+      exchangeCode: exchangeAuthorizationCode,
+      persistRefreshToken: persistYouTubeRefreshToken,
+    });
+
+    if (outcome === "denied") {
       logSafe("warn", "Google OAuth consent was declined", { error: googleError });
       redirect(res, "denied");
       return;
     }
-    if (!state || !code || !expectedState || state !== expectedState) {
-      logSafe("warn", "YouTube OAuth callback rejected because state did not match");
-      res.status(403).json({ error: "Invalid OAuth state" });
-      return;
-    }
-    const payload = verifyOAuthState(state, ENV.cookieSecret);
-    if (!payload) {
+    if (outcome === "invalid_state") {
       logSafe("warn", "YouTube OAuth callback rejected because state was invalid or expired");
       res.status(403).json({ error: "Invalid OAuth state" });
       return;
     }
-
-    try {
-      const refreshToken = await exchangeAuthorizationCode(code);
-      const ciphertext = encryptRefreshToken(refreshToken, getYouTubeTokenEncryptionKey());
-      await db.upsertYouTubeConnection(payload.ownerOpenId, ciphertext);
+    if (outcome === "connected") {
       logSafe("info", "YouTube OAuth connection stored for administrator");
       redirect(res, "connected");
-    } catch (error) {
-      logSafe("error", "YouTube OAuth callback failed", safeErrorMessage(error));
-      redirect(res, "error");
+      return;
     }
+    logSafe("error", "YouTube OAuth callback failed");
+    redirect(res, "error");
   });
 
   app.post("/api/youtube/oauth/disconnect", async (req, res) => {
