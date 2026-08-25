@@ -1,10 +1,10 @@
 const REDACTED = "[REDACTED]";
 
 const PATTERNS: RegExp[] = [
-  /(\b(?:access_token|appsecret_proof|app_secret|verify_token|code)=)[^&\s"',}]+/gi,
+  /(\b(?:access_token|appsecret_proof|app_secret|verify_token|code|refresh_token|client_secret|id_token)=)[^&\s"',}]+/gi,
   /(authorization["'\s:=]+bearer\s+)[^"'\s,}]+/gi,
   /\bBearer\s+[A-Za-z0-9._\-~+/=]+/g,
-  /("(?:access_token|app_secret|appsecret_proof|refresh_token|verify_token)"\s*:\s*")[^"]+/gi,
+  /("(?:access_token|app_secret|appsecret_proof|refresh_token|verify_token|client_secret|id_token|code)"\s*:\s*")[^"]+/gi,
   /\bEAA[A-Za-z0-9_\-]{10,}\b/g,
   /\bIGA{1,2}[A-Za-z0-9_\-]{10,}\b/g,
 ];
@@ -16,6 +16,7 @@ function configuredSecrets(): string[] {
     "META_VERIFY_TOKEN",
     "WHATSAPP_FUNNEL_WEBHOOK_URL",
     "JWT_SECRET",
+    "YOUTUBE_OAUTH_CLIENT_SECRET",
   ];
   return keys.map(key => (process.env[key] ?? "").trim()).filter(value => value.length >= 4);
 }

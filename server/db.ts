@@ -8,6 +8,7 @@ import {
   publishedMedia,
   users,
   webhookEvents,
+  youtubeConnections,
   type InsertUser,
   type InsightSnapshot,
   type KeywordRule,
@@ -15,6 +16,7 @@ import {
   type PublishedMedia,
   type PublishStatus,
   type WebhookEvent,
+  type YouTubeConnection,
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 
@@ -55,6 +57,30 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 export async function getUserByOpenId(openId: string) {
   const rows = await getDb().select().from(users).where(eq(users.openId, openId)).limit(1);
   return rows[0];
+}
+
+export async function getYouTubeConnection(ownerOpenId: string): Promise<YouTubeConnection | null> {
+  const rows = await getDb().select().from(youtubeConnections)
+    .where(eq(youtubeConnections.ownerOpenId, ownerOpenId)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function upsertYouTubeConnection(ownerOpenId: string, refreshTokenCiphertext: string): Promise<void> {
+  await getDb().insert(youtubeConnections).values({
+    ownerOpenId,
+    refreshTokenCiphertext,
+    connectedAt: new Date(),
+    lastAuthorizedAt: new Date(),
+  }).onDuplicateKeyUpdate({
+    set: {
+      refreshTokenCiphertext,
+      lastAuthorizedAt: new Date(),
+    },
+  });
+}
+
+export async function deleteYouTubeConnection(ownerOpenId: string): Promise<void> {
+  await getDb().delete(youtubeConnections).where(eq(youtubeConnections.ownerOpenId, ownerOpenId));
 }
 
 export async function insertWebhookEvent(input: {

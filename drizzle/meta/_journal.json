@@ -22,6 +22,13 @@
       "when": 1787357736755,
       "tag": "0002_even_blackheart",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1787697094102,
+      "tag": "0003_military_firedrake",
+      "breakpoints": true
     }
   ]
 }

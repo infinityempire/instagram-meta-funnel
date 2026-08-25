@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "85450cd2-f508-4e2a-ba81-2f67f6b52290",
-  "prevId": "985dafe0-3501-4a01-9ff8-f43f5e8de18f",
+  "id": "69ae59a6-4402-4018-9cc4-38c9b3657669",
+  "prevId": "cc4ba2d1-3cb6-4980-8fa1-4035e7119e77",
   "tables": {
     "insight_snapshots": {
       "name": "insight_snapshots",
@@ -700,6 +700,77 @@
           ]
         }
       },
+      "checkConstraint": {}
+    },
+    "youtube_connections": {
+      "name": "youtube_connections",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "ownerOpenId": {
+          "name": "ownerOpenId",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "refreshTokenCiphertext": {
+          "name": "refreshTokenCiphertext",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "connectedAt": {
+          "name": "connectedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "lastAuthorizedAt": {
+          "name": "lastAuthorizedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {
+        "youtube_connections_owner_open_id_idx": {
+          "name": "youtube_connections_owner_open_id_idx",
+          "columns": [
+            "ownerOpenId"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "youtube_connections_id": {
+          "name": "youtube_connections_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
       "checkConstraint": {}
     }
   },

@@ -41,9 +41,19 @@
 - [ ] Select a no-CAPTCHA publishing workflow that avoids unsupported automation and does not require repeated browser login attempts.
 - [ ] Upload the approved Luli Moon video to YouTube Studio as a child-directed AI-assisted draft after the owner signs in.
 - [x] Prepare the approved Luli Moon video and copy-ready metadata for manual upload through the YouTube mobile app.
-- [ ] Deliver the Luli Moon video file and a copy-ready manual upload card for the YouTube mobile app.
-- [ ] Provide Claude with a safe diagnostic prompt for the Google verification block in YouTube Studio.
-- [ ] Provide OpenHands with a structured official-only diagnostic prompt for the Google verification block in YouTube Studio.
+- [x] Deliver the Luli Moon video file and a copy-ready manual upload card for the YouTube mobile app.
+- [x] Attach the approved Luli Moon MP4 file for the user to download to their phone.
+- [x] Attach the Hebrew manual upload card with the copy-ready title, description, child setting, and AI disclosure guidance.
+- [x] Provide Claude with a safe diagnostic prompt for the Google verification block in YouTube Studio.
+- [x] Provide OpenHands with a structured official-only diagnostic prompt for the Google verification block in YouTube Studio.
+- [x] Assess official YouTube Data API automation requirements, OAuth constraints, audit limits, and existing Google connection availability before choosing an upload workflow.
+- [x] Provide OpenHands with an official-only implementation prompt for YouTube Data API upload automation and authentication diagnosis.
+- [x] Audit the isolated OpenHands YouTube upload pipeline for security, completeness, and compatibility before any repository integration.
+- [ ] Transfer and adapt the audited YouTube Data API upload module into the active codebase with private-draft defaults.
+- [ ] Configure official Google OAuth and production secrets only after the owner completes the required one-time authorization.
+- [ ] Document and apply a minimal YouTube Data API-only Google Cloud configuration with quota controls and billing alerts before enabling automation.
+- [x] Configure only the YouTube Data API in the new Google Cloud project and exclude paid compute, storage, analytics, and AI services.
+- [ ] Configure the most restrictive available YouTube quota and project-scoped billing alerts after an approved billing account is linked.
 - [ ] Verify the approved Luli Moon video and prepare its YouTube upload draft with child-directed and AI disclosure settings.
 - [x] Provide a detailed, account-specific Meta app creation guide with webhook and secret-entry details.
 - [x] Add active-project tests for matched-keyword lead routing and duplicate webhook suppression.
@@ -51,3 +61,17 @@
 - [x] Add reach and engagement visualization to the active dashboard using official stored insight snapshots.
 - [x] Verify every active dashboard route in the browser after the final code state, including empty and unavailable-configuration states.
 - [x] Document the low-memory production-build verification while the standard minified build exceeds current sandbox resources.
+- [ ] Provide OpenHands with the exact project and redirect values needed to create the blocked Google OAuth web client without exposing its secret.
+- [ ] Create the YouTube OAuth web client from a stable browser session owned by the Google Cloud project administrator.
+- [ ] Guide the owner through switching from the brand Gmail to the primary Google account that owns the YouTube Cloud project.
+- [x] Add a server-only Google OAuth configuration layer that validates credentials without logging or exposing them.
+- [x] Add a database record for encrypted YouTube refresh-token storage and secure connection status only.
+- [x] Implement `/api/youtube/oauth/start` with one-time state and a short-lived secure cookie.
+- [x] Implement `/api/youtube/oauth/callback` with strict state validation, server-side code exchange, encrypted refresh-token storage, and safe error handling.
+- [x] Implement an admin-only YouTube connection-status view without returning token or secret values.
+- [x] Add an owner-controlled disconnect flow that revokes the Google token and removes stored credentials.
+- [ ] Add tests for OAuth state validation, encrypted persistence, configuration safety, and private-only upload policy.
+- [x] Document the one-time owner authorization and the strictly private-only post-connection test workflow.
+- [x] Add unit tests for OAuth state validation, encrypted refresh-token storage, and configuration responses that omit secret values.
+- [ ] Document the post-authorization YouTube test-upload workflow: explicit owner approval, private visibility, Made for Kids setting, AI disclosure, and no-public-upload rule.
+- [x] Guide the owner through changing the exposed Facebook password without requesting or handling credentials.

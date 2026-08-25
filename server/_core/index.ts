@@ -9,6 +9,7 @@ import { appRouter } from "../routers";
 import { getMetaConfig } from "../meta/config";
 import { logSafe } from "../meta/safeLog";
 import { handleWebhookVerify, processWebhookPayload, verifyWebhookSignature } from "../meta/webhooks";
+import { registerYouTubeOAuthRoutes } from "../youtube/oauth";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 
@@ -72,6 +73,7 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+  registerYouTubeOAuthRoutes(app);
   // tRPC API
   app.use(
     "/api/trpc",

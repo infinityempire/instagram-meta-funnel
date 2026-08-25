@@ -11,6 +11,8 @@ import { refreshInsightsForMedia } from "./meta/insights";
 import { MetaNotConfiguredError } from "./meta/client";
 import { createReelAndPublish, publishInputSchema, refreshMediaStatus } from "./meta/publishing";
 import { safeErrorMessage } from "./meta/safeLog";
+import { getYouTubeConfigurationStatus } from "./youtube/config";
+import { disconnectYouTubeConnection } from "./youtube/oauth";
 
 const paginationSchema = z.object({ limit: z.number().int().min(1).max(100).default(25), offset: z.number().int().min(0).default(0) });
 
@@ -31,6 +33,27 @@ export const appRouter = router({
   }),
   meta: router({
     getConfigurationStatus: adminProcedure.query(() => getMetaConfigStatus()),
+  }),
+  youtube: router({
+    getConnectionStatus: adminProcedure.query(async ({ ctx }) => {
+      const connection = await db.getYouTubeConnection(ctx.user.openId);
+      const configuration = getYouTubeConfigurationStatus();
+      return {
+        configured: configuration.configured,
+        missing: configuration.missing,
+        redirectUri: configuration.redirectUri,
+        connected: Boolean(connection),
+        connectedAt: connection?.connectedAt ?? null,
+        lastAuthorizedAt: connection?.lastAuthorizedAt ?? null,
+      };
+    }),
+    disconnect: adminProcedure.mutation(async ({ ctx }) => {
+      try {
+        return await disconnectYouTubeConnection(ctx.user.openId);
+      } catch (error) {
+        throw toTrpcError(error);
+      }
+    }),
   }),
   dashboard: router({
     getSummary: adminProcedure.query(async () => {

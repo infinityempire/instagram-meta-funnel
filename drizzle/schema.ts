@@ -101,6 +101,21 @@ export const insightSnapshots = mysqlTable("insight_snapshots", {
   mediaRecordedIdx: index("insight_snapshots_media_recorded_idx").on(table.mediaId, table.capturedAt),
 }));
 
+/**
+ * A single administrator-owned YouTube OAuth connection. The refresh token is
+ * encrypted before it reaches this table; no Google access token is persisted.
+ */
+export const youtubeConnections = mysqlTable("youtube_connections", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerOpenId: varchar("ownerOpenId", { length: 64 }).notNull(),
+  refreshTokenCiphertext: text("refreshTokenCiphertext").notNull(),
+  connectedAt: timestamp("connectedAt").notNull().defaultNow(),
+  lastAuthorizedAt: timestamp("lastAuthorizedAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow().onUpdateNow(),
+}, table => ({
+  ownerIdx: uniqueIndex("youtube_connections_owner_open_id_idx").on(table.ownerOpenId),
+}));
+
 /** Retained for existing audit data; Meta feature code does not write this table. */
 export const operationLogs = mysqlTable("operation_logs", {
   id: int("id").autoincrement().primaryKey(),
@@ -123,3 +138,4 @@ export type KeywordRule = typeof keywordRules.$inferSelect;
 export type Lead = typeof leads.$inferSelect;
 export type PublishedMedia = typeof publishedMedia.$inferSelect;
 export type InsightSnapshot = typeof insightSnapshots.$inferSelect;
+export type YouTubeConnection = typeof youtubeConnections.$inferSelect;
