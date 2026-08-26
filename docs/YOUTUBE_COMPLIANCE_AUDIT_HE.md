@@ -55,6 +55,10 @@
 
 תוצאת קריאה ציבורית של דף הטופס עשויה לכלול טקסט כללי כמו "Your email has been sent" או "Submitted" שאינו קשור בהכרח לבקשה זו. אין לראות בכך אישור הגשה. רק מסך קבלה אותנטי בחשבון הבעלים או הודעת אישור שנשלחה אליו לאחר Submit ייחשבו הוכחה להגשה.
 
+טיוטה שמולאה בסשן דפדפן זמני או תחת חשבון אחר אינה הופכת לקישור "מוכן" ואינה בהכרח נשמרת. אם הבעלים פותח טופס ריק, יש למלא אותו מחדש במסך הפעיל שלו; אין להציג זאת כהגשה או כטיוטה שמורה.
+
+ב־26 באוגוסט 2026 נבדק שדף תנאי השימוש הציבורי זמין ב־`https://instafunnel-lphz3bum.manus.space/terms`. יש להזין בטופס את כתובות המדיניות הציבוריות רק לאחר שהבעלים בודק שהן מתאימות לפרטי השירות.
+
 פרטי המילוי שנבחרו הם: Request Type = quota; הגשה כיחיד; Category = Creator Tools and Services; Independent Developer/Sole Proprietor; קהל = Individual Content Creators ו־Internal Users; Free service; No Google representative; מקור API = Google Developer Documentation; API client = Small Stories Hebrew; דפי מדיניות: `/privacy` ו־`/terms`; פרויקט `855401426442`; שימושים Video Uploading, Tools for Creators, Internal Company Tool ו־Analytics; OAuth נדרש; תחזית פחות מ־1,000 בקשות ביום; endpoints `search.list` ו־`videos.insert`; וכל ההצהרות.
 
 שלושת שדות הראיות הם Architecture Diagram, User Flow Diagrams ו־Other Supporting Materials. יש לצרף PDF או PNG/JPEG קטן מ־10MB. קובץ הראיות המוכן הוא `docs/audit/LEGAL_AND_OAUTH_EVIDENCE_EN.pdf`. ניסיון קודם צירף קובץ טקסט מדומה ולכן אינו תקף; הטופס דורש קובץ בינארי אמיתי בכל שדה הראיות הנדרש.

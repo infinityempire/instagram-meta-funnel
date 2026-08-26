@@ -126,6 +126,9 @@
 - [ ] Retry the completed YouTube audit form with automated evidence attachment and verify a genuine submission confirmation.
 - [ ] Prepare a sanitized Claude prompt that requests a compliant workaround for the YouTube audit form’s mandatory file-attachment behavior.
 - [ ] Prepare the three YouTube audit evidence fields so the owner can select the same PDF from the Android file picker.
+- [ ] Refill the YouTube compliance-audit form in the owner’s active browser session because the prior temporary-browser draft was not saved or submitted.
+- [ ] Prepare a safe Claude-in-Chrome handoff that fills only the verified technical text fields in the owner’s browser and stops before file selection, attestations, or submission.
+- [ ] Keep the YouTube compliance-audit form workflow manual; do not use third-party RPA or Auto-Fill extensions for Google form fields, evidence selection, attestations, or submission.
 - [x] Deliver a complete, sanitized OpenHands prompt with all YouTube audit form values, evidence paths, and submission safeguards.
 - [x] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with an established consistent daytime character design.
 - [x] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
@@ -149,3 +152,4 @@
 - [x] Produce and pass audiovisual QA for Pitsi and the Little Spark, Pitsi and the Cloud Dance, and Pitsi and the Soft Hug, completing the small Pitsi batch.
 - [x] Produce and pass audiovisual QA for the Luli and the Little Flower style pilot after replacing narration that did not match the static visual result.
 - [x] Produce and pass audiovisual QA for Luli and the Golden Leaf, preserving the tested Luli character design and a matching Hebrew narration.
+- [ ] Keep the YouTube compliance-audit workflow manual; do not use third-party RPA, Auto-Fill, or shortcut extensions to simulate normal typing, select evidence, accept attestations, or submit the Google form.
