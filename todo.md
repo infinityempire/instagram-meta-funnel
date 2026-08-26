@@ -104,8 +104,13 @@
 - [x] Add database records for private/public YouTube videos, immutable upload metadata, and daily metric snapshots.
 - [ ] Reauthorize with read-only YouTube scopes, then verify the persisted private Made for Kids status of every uploaded video.
 - [ ] Save a pre-publication quality checklist covering narration synchronization, scene continuity, pacing, duration, visual defects, child setting, and AI disclosure.
+- [ ] Perform audiovisual quality review for all five private children’s videos and publish only items that pass every check.
+- [ ] Prepare the YouTube API compliance-audit submission package for public publishing eligibility.
+- [ ] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with the established night-time character design.
+- [ ] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
 - [ ] Add the minimum YouTube Analytics read scope and request a new owner consent only when the monitoring implementation is ready.
 - [ ] Send the owner a concise alert when a monitored public video reaches a meaningful performance or monetization milestone, without auto-publishing any content.
+- [ ] Include estimated-revenue alerts and a reminder to review Israeli tax and VAT registration obligations with a qualified tax professional before filing.
 - [ ] Expand the OAuth request to include read-only performance and monetary analytics scopes before the next owner reauthorization.
 - [ ] Define an experiment portfolio of recurring story worlds and new candidate worlds with a small private-test batch for each.
 - [ ] Add data-based expansion rules that prepare more private drafts only for winning children’s-story worlds.
