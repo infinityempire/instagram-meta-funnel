@@ -103,11 +103,12 @@
 - [ ] Add an idempotent Heartbeat endpoint and daily 24-hour/72-hour YouTube metrics refresh schedule, activated only after a public video exists.
 - [x] Add database records for private/public YouTube videos, immutable upload metadata, and daily metric snapshots.
 - [ ] Reauthorize with read-only YouTube scopes, then verify the persisted private Made for Kids status of every uploaded video.
-- [ ] Save a pre-publication quality checklist covering narration synchronization, scene continuity, pacing, duration, visual defects, child setting, and AI disclosure.
-- [ ] Perform audiovisual quality review for all five private children’s videos and publish only items that pass every check.
-- [ ] Prepare the YouTube API compliance-audit submission package for public publishing eligibility.
-- [ ] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with the established night-time character design.
-- [ ] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
+- [x] Create a complete pre-publication QA checklist recording narration, duration, visual defects, child-directed setting, and AI disclosure for each video.
+- [x] Perform audiovisual quality review for all five private children’s videos.
+- [ ] Prepare a complete, submission-ready YouTube API compliance-audit package for public publishing eligibility.
+- [x] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with an established consistent daytime character design.
+- [x] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
+- [ ] Release QA-approved videos publicly after the YouTube audit removes the private-only API restriction.
 - [ ] Add the minimum YouTube Analytics read scope and request a new owner consent only when the monitoring implementation is ready.
 - [ ] Send the owner a concise alert when a monitored public video reaches a meaningful performance or monetization milestone, without auto-publishing any content.
 - [ ] Include estimated-revenue alerts and a reminder to review Israeli tax and VAT registration obligations with a qualified tax professional before filing.
