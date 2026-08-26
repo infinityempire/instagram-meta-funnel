@@ -142,4 +142,5 @@
 - [x] Add an end-to-end mocked private-upload success test proving the real completion path logs no OAuth secrets.
 - [x] Complete audiovisual QA for four new Pitsi pilot episodes: Pitsi and the Drop, Pitsi and the Sunbeam, Pitsi and the Flying Leaf, and Pitsi and the Little Rainbow; retain only passing candidates for potential private upload.
 - [ ] Produce Pitsi episodes 5–10 in small QA-gated batches; do not classify failed intermediate versions as upload candidates.
-- [ ] Obtain a fresh owner confirmation before uploading the four new QA-approved Pitsi episodes as private only, with Made for Kids and AI disclosure metadata.
+- [ ] Obtain a fresh owner confirmation before uploading the five new QA-approved Pitsi episodes as private only, with Made for Kids and AI disclosure metadata.
+- [x] Repair and pass audiovisual QA for Pitsi and the Rainbow for a Friend; reject the original morphing version and retain only the corrected candidate for possible private upload.
