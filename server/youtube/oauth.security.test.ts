@@ -6,6 +6,7 @@ import {
   verifyOAuthState,
 } from "./crypto";
 import { getYouTubeConfigurationStatus } from "./config";
+import { createOwnerAuthorizationLaunchUrl } from "./oauth";
 
 const originalEnv = { ...process.env };
 
@@ -42,5 +43,21 @@ describe("YouTube OAuth security primitives", () => {
 
     expect(status).toMatchObject({ configured: true, missing: [] });
     expect(JSON.stringify(status)).not.toContain("do-not-return-this-value");
+  });
+});
+
+describe("YouTube owner launch link", () => {
+  it("creates a short-lived signed link without embedding OAuth credentials", () => {
+    const launchUrl = createOwnerAuthorizationLaunchUrl(
+      "https://instafunnel-lphz3bum.manus.space",
+      "owner-123",
+      "state-secret",
+    );
+    const url = new URL(launchUrl);
+    const ticket = url.searchParams.get("ticket");
+
+    expect(url.pathname).toBe("/api/youtube/oauth/launch");
+    expect(verifyOAuthState(ticket!, "state-secret")?.ownerOpenId).toBe("owner-123");
+    expect(launchUrl).not.toContain("YOUTUBE_OAUTH_CLIENT_SECRET");
   });
 });

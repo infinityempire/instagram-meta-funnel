@@ -12,6 +12,7 @@ const GOOGLE_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 const GOOGLE_REVOCATION_ENDPOINT = "https://oauth2.googleapis.com/revoke";
 const STATE_COOKIE = "youtube_oauth_state";
 const STATE_COOKIE_MAX_AGE_MS = 10 * 60 * 1000;
+const OWNER_LAUNCH_PATH = "/api/youtube/oauth/launch";
 
 function query(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -30,6 +31,12 @@ function stateCookieOptions() {
 
 function redirect(res: Response, outcome: "connected" | "denied" | "error"): void {
   res.redirect(302, `/?youtube=${outcome}`);
+}
+
+export function createOwnerAuthorizationLaunchUrl(baseUrl: string, ownerOpenId: string, secret: string): string {
+  const url = new URL(OWNER_LAUNCH_PATH, baseUrl);
+  url.searchParams.set("ticket", createOAuthState(ownerOpenId, secret));
+  return url.toString();
 }
 
 async function requireAdmin(req: Request, res: Response) {
@@ -108,6 +115,25 @@ export async function disconnectYouTubeConnection(ownerOpenId: string): Promise<
   return { disconnected: true };
 }
 
+function beginYouTubeAuthorization(res: Response, ownerOpenId: string): void {
+  const config = getYouTubeOAuthConfig();
+  const state = createOAuthState(ownerOpenId, ENV.cookieSecret);
+  res.cookie(STATE_COOKIE, state, stateCookieOptions());
+
+  const authorizationUrl = new URL(GOOGLE_AUTHORIZATION_ENDPOINT);
+  authorizationUrl.search = new URLSearchParams({
+    client_id: config.clientId,
+    redirect_uri: config.redirectUri,
+    response_type: "code",
+    scope: YOUTUBE_UPLOAD_SCOPE,
+    access_type: "offline",
+    include_granted_scopes: "true",
+    prompt: "consent",
+    state,
+  }).toString();
+  res.redirect(302, authorizationUrl.toString());
+}
+
 export function registerYouTubeOAuthRoutes(app: Express) {
   app.get("/api/youtube/oauth/start", async (req, res) => {
     const user = await requireAdmin(req, res);
@@ -120,22 +146,18 @@ export function registerYouTubeOAuthRoutes(app: Express) {
       res.status(503).json({ error: "YouTube OAuth is not configured" });
       return;
     }
-    const config = getYouTubeOAuthConfig();
-    const state = createOAuthState(user.openId, ENV.cookieSecret);
-    res.cookie(STATE_COOKIE, state, stateCookieOptions());
+    beginYouTubeAuthorization(res, user.openId);
+  });
 
-    const authorizationUrl = new URL(GOOGLE_AUTHORIZATION_ENDPOINT);
-    authorizationUrl.search = new URLSearchParams({
-      client_id: config.clientId,
-      redirect_uri: config.redirectUri,
-      response_type: "code",
-      scope: YOUTUBE_UPLOAD_SCOPE,
-      access_type: "offline",
-      include_granted_scopes: "true",
-      prompt: "consent",
-      state,
-    }).toString();
-    res.redirect(302, authorizationUrl.toString());
+  app.get(OWNER_LAUNCH_PATH, (req, res) => {
+    const ticket = query(req, "ticket");
+    const payload = ticket ? verifyOAuthState(ticket, ENV.cookieSecret) : null;
+    const status = getYouTubeConfigurationStatus();
+    if (!payload || !status.configured) {
+      res.status(403).send("The YouTube authorization link is invalid or expired.");
+      return;
+    }
+    beginYouTubeAuthorization(res, payload.ownerOpenId);
   });
 
   app.get("/api/youtube/oauth/callback", async (req, res) => {

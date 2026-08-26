@@ -62,8 +62,8 @@
 - [x] Verify every active dashboard route in the browser after the final code state, including empty and unavailable-configuration states.
 - [x] Document the low-memory production-build verification while the standard minified build exceeds current sandbox resources.
 - [ ] Provide OpenHands with the exact project and redirect values needed to create the blocked Google OAuth web client without exposing its secret.
-- [ ] Create the YouTube OAuth web client from a stable browser session owned by the Google Cloud project administrator.
-- [ ] Guide the owner through switching from the brand Gmail to the primary Google account that owns the YouTube Cloud project.
+- [x] Create the YouTube OAuth web client from a stable browser session owned by the Google Cloud project administrator.
+- [x] Guide the owner through switching from the brand Gmail to the primary Google account that owns the YouTube Cloud project.
 - [x] Add a server-only Google OAuth configuration layer that validates credentials without logging or exposing them.
 - [x] Add a database record for encrypted YouTube refresh-token storage and secure connection status only.
 - [x] Implement `/api/youtube/oauth/start` with one-time state and a short-lived secure cookie.
@@ -78,3 +78,13 @@
 - [x] Add a pure private-only YouTube upload metadata builder that enforces Made for Kids and AI disclosure without sending any upload request.
 - [x] Add a callback-level persistence test proving refresh tokens are encrypted before database storage.
 - [x] Add a callback-flow test that verifies valid state, token exchange, encrypted storage, and secret-free response behavior together.
+- [ ] Guide the owner through creating the Google OAuth client one field at a time without requiring multi-screen copying.
+- [ ] Open secure project-secret fields for the YouTube OAuth client ID and client secret without requesting either value in chat.
+- [ ] Guide the owner to generate a new Google OAuth client secret because the original value is masked after creation.
+- [ ] Confirm the owner has located the Client secrets section before requesting any copy action.
+- [ ] Clarify the difference between the OAuth client display name, the long Client ID, and the generated Client Secret before secure entry.
+- [ ] Present the project secrets card with fields for the newly created YouTube OAuth Client ID and Client Secret.
+- [ ] Complete the remaining owner interaction through one Google approval link only, without further secret-entry steps.
+- [ ] Add a short-lived, signed YouTube authorization-launch link that does not require a separate Manus dashboard sign-in.
+- [ ] Diagnose and correct the YouTube authorization button so it reliably redirects the owner to Google.
+- [ ] Verify and finish the interrupted implementation of the one-click signed OAuth launch link.
