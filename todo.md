@@ -88,3 +88,5 @@
 - [ ] Add a short-lived, signed YouTube authorization-launch link that does not require a separate Manus dashboard sign-in.
 - [ ] Diagnose and correct the YouTube authorization button so it reliably redirects the owner to Google.
 - [ ] Verify and finish the interrupted implementation of the one-click signed OAuth launch link.
+- [ ] Restore live Express API routing so the published YouTube OAuth launch and callback paths do not fall back to static HTML.
+- [x] Use the verified low-memory build path for deployment so the Express server is included in the published release.
