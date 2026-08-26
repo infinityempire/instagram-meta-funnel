@@ -5,7 +5,7 @@ import { ENV } from "../_core/env";
 import * as db from "../db";
 import { logSafe, safeErrorMessage } from "../meta/safeLog";
 import { createOAuthState, decryptRefreshToken, encryptRefreshToken, verifyOAuthState } from "./crypto";
-import { getYouTubeConfigurationStatus, getYouTubeOAuthConfig, getYouTubeTokenEncryptionKey, YOUTUBE_UPLOAD_SCOPE } from "./config";
+import { getYouTubeConfigurationStatus, getYouTubeOAuthConfig, getYouTubeTokenEncryptionKey, YOUTUBE_OAUTH_SCOPES } from "./config";
 
 const GOOGLE_AUTHORIZATION_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth";
 const GOOGLE_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
@@ -125,7 +125,7 @@ function beginYouTubeAuthorization(res: Response, ownerOpenId: string): void {
     client_id: config.clientId,
     redirect_uri: config.redirectUri,
     response_type: "code",
-    scope: YOUTUBE_UPLOAD_SCOPE,
+    scope: YOUTUBE_OAUTH_SCOPES,
     access_type: "offline",
     include_granted_scopes: "true",
     prompt: "consent",

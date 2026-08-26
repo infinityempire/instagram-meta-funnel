@@ -1,6 +1,11 @@
 const DEFAULT_REDIRECT_URI = "https://instafunnel-lphz3bum.manus.space/api/youtube/oauth/callback";
 
-export const YOUTUBE_UPLOAD_SCOPE = "https://www.googleapis.com/auth/youtube.upload";
+export const YOUTUBE_OAUTH_SCOPES = [
+  "https://www.googleapis.com/auth/youtube.upload",
+  "https://www.googleapis.com/auth/youtube.readonly",
+  "https://www.googleapis.com/auth/yt-analytics.readonly",
+  "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+].join(" ");
 
 export type YouTubeOAuthConfig = {
   clientId: string;

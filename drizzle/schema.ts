@@ -1,4 +1,5 @@
 import {
+  bigint,
   boolean,
   index,
   int,
@@ -116,6 +117,56 @@ export const youtubeConnections = mysqlTable("youtube_connections", {
   ownerIdx: uniqueIndex("youtube_connections_owner_open_id_idx").on(table.ownerOpenId),
 }));
 
+export const YOUTUBE_VISIBILITY = ["private", "unlisted", "public"] as const;
+
+/** Metadata for videos uploaded through the approved YouTube workflow. */
+export const youtubeVideos = mysqlTable("youtube_videos", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerOpenId: varchar("ownerOpenId", { length: 64 }).notNull(),
+  youtubeVideoId: varchar("youtubeVideoId", { length: 32 }).notNull(),
+  sourceFilename: varchar("sourceFilename", { length: 255 }).notNull(),
+  title: varchar("title", { length: 100 }).notNull(),
+  storyWorld: varchar("storyWorld", { length: 80 }).notNull(),
+  visibility: mysqlEnum("visibility", YOUTUBE_VISIBILITY).notNull().default("private"),
+  madeForKids: boolean("madeForKids").notNull().default(true),
+  containsSyntheticMedia: boolean("containsSyntheticMedia").notNull().default(true),
+  uploadedAt: timestamp("uploadedAt").notNull().defaultNow(),
+  publicAt: timestamp("publicAt"),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow().onUpdateNow(),
+}, table => ({
+  videoIdIdx: uniqueIndex("youtube_videos_video_id_idx").on(table.youtubeVideoId),
+  ownerVisibilityIdx: index("youtube_videos_owner_visibility_idx").on(table.ownerOpenId, table.visibility),
+}));
+
+/** Immutable snapshots returned by official YouTube Analytics report queries. */
+export const youtubeMetricSnapshots = mysqlTable("youtube_metric_snapshots", {
+  id: int("id").autoincrement().primaryKey(),
+  youtubeVideoRowId: int("youtubeVideoRowId").notNull(),
+  observedAt: timestamp("observedAt").notNull().defaultNow(),
+  views: int("views").notNull().default(0),
+  likes: int("likes").notNull().default(0),
+  estimatedMinutesWatched: int("estimatedMinutesWatched").notNull().default(0),
+  averageViewDurationSeconds: int("averageViewDurationSeconds").notNull().default(0),
+  averageViewPercentageBasisPoints: int("averageViewPercentageBasisPoints").notNull().default(0),
+  subscribersGained: int("subscribersGained").notNull().default(0),
+  estimatedRevenueMicros: bigint("estimatedRevenueMicros", { mode: "number" }).notNull().default(0),
+}, table => ({
+  videoObservedIdx: index("youtube_metric_snapshots_video_observed_idx").on(table.youtubeVideoRowId, table.observedAt),
+}));
+
+/** One owner-level scheduler configuration. It never authorizes public publishing. */
+export const youtubeMonitoringConfigs = mysqlTable("youtube_monitoring_configs", {
+  id: int("id").autoincrement().primaryKey(),
+  ownerOpenId: varchar("ownerOpenId", { length: 64 }).notNull(),
+  scheduleCronTaskUid: varchar("scheduleCronTaskUid", { length: 65 }),
+  enabled: boolean("enabled").notNull().default(false),
+  lastRunAt: timestamp("lastRunAt"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow().onUpdateNow(),
+}, table => ({
+  ownerIdx: uniqueIndex("youtube_monitoring_configs_owner_idx").on(table.ownerOpenId),
+}));
+
 /** Retained for existing audit data; Meta feature code does not write this table. */
 export const operationLogs = mysqlTable("operation_logs", {
   id: int("id").autoincrement().primaryKey(),
@@ -139,3 +190,5 @@ export type Lead = typeof leads.$inferSelect;
 export type PublishedMedia = typeof publishedMedia.$inferSelect;
 export type InsightSnapshot = typeof insightSnapshots.$inferSelect;
 export type YouTubeConnection = typeof youtubeConnections.$inferSelect;
+export type YouTubeVideo = typeof youtubeVideos.$inferSelect;
+export type YouTubeMetricSnapshot = typeof youtubeMetricSnapshots.$inferSelect;

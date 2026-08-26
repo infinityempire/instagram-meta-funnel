@@ -9,6 +9,9 @@ import {
   users,
   webhookEvents,
   youtubeConnections,
+  youtubeMetricSnapshots,
+  youtubeMonitoringConfigs,
+  youtubeVideos,
   type InsertUser,
   type InsightSnapshot,
   type KeywordRule,
@@ -17,6 +20,8 @@ import {
   type PublishStatus,
   type WebhookEvent,
   type YouTubeConnection,
+  type YouTubeMetricSnapshot,
+  type YouTubeVideo,
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 
@@ -81,6 +86,90 @@ export async function upsertYouTubeConnection(ownerOpenId: string, refreshTokenC
 
 export async function deleteYouTubeConnection(ownerOpenId: string): Promise<void> {
   await getDb().delete(youtubeConnections).where(eq(youtubeConnections.ownerOpenId, ownerOpenId));
+}
+
+export async function upsertYouTubeVideo(input: {
+  ownerOpenId: string;
+  youtubeVideoId: string;
+  sourceFilename: string;
+  title: string;
+  storyWorld: string;
+  visibility: "private" | "unlisted" | "public";
+  madeForKids: boolean;
+  containsSyntheticMedia: boolean;
+  publicAt?: Date | null;
+}): Promise<YouTubeVideo> {
+  await getDb().insert(youtubeVideos).values({ ...input, publicAt: input.publicAt ?? null }).onDuplicateKeyUpdate({
+    set: {
+      sourceFilename: input.sourceFilename,
+      title: input.title,
+      storyWorld: input.storyWorld,
+      visibility: input.visibility,
+      madeForKids: input.madeForKids,
+      containsSyntheticMedia: input.containsSyntheticMedia,
+      publicAt: input.publicAt ?? null,
+    },
+  });
+  const rows = await getDb().select().from(youtubeVideos).where(eq(youtubeVideos.youtubeVideoId, input.youtubeVideoId)).limit(1);
+  if (!rows[0]) throw new Error("YouTube video record could not be saved");
+  return rows[0];
+}
+
+export async function listYouTubeVideos(ownerOpenId: string, visibility?: "private" | "unlisted" | "public"): Promise<YouTubeVideo[]> {
+  const db = getDb();
+  if (visibility) return db.select().from(youtubeVideos)
+    .where(sql`${youtubeVideos.ownerOpenId} = ${ownerOpenId} AND ${youtubeVideos.visibility} = ${visibility}`)
+    .orderBy(desc(youtubeVideos.uploadedAt));
+  return db.select().from(youtubeVideos).where(eq(youtubeVideos.ownerOpenId, ownerOpenId)).orderBy(desc(youtubeVideos.uploadedAt));
+}
+
+export async function insertYouTubeMetricSnapshot(input: {
+  youtubeVideoRowId: number;
+  views: number;
+  likes: number;
+  estimatedMinutesWatched: number;
+  averageViewDurationSeconds: number;
+  averageViewPercentageBasisPoints: number;
+  subscribersGained: number;
+  estimatedRevenueMicros: number;
+}): Promise<YouTubeMetricSnapshot> {
+  const result = await getDb().insert(youtubeMetricSnapshots).values(input);
+  const rows = await getDb().select().from(youtubeMetricSnapshots)
+    .where(eq(youtubeMetricSnapshots.id, Number(result[0].insertId))).limit(1);
+  if (!rows[0]) throw new Error("YouTube metric snapshot could not be saved");
+  return rows[0];
+}
+
+export async function getYouTubeMonitoringConfig(ownerOpenId: string) {
+  const rows = await getDb().select().from(youtubeMonitoringConfigs)
+    .where(eq(youtubeMonitoringConfigs.ownerOpenId, ownerOpenId)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function getYouTubeMonitoringConfigByTaskUid(taskUid: string) {
+  const rows = await getDb().select().from(youtubeMonitoringConfigs)
+    .where(eq(youtubeMonitoringConfigs.scheduleCronTaskUid, taskUid)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function upsertYouTubeMonitoringConfig(input: {
+  ownerOpenId: string;
+  scheduleCronTaskUid?: string | null;
+  enabled: boolean;
+  lastRunAt?: Date | null;
+}): Promise<void> {
+  await getDb().insert(youtubeMonitoringConfigs).values(input).onDuplicateKeyUpdate({
+    set: {
+      scheduleCronTaskUid: input.scheduleCronTaskUid ?? null,
+      enabled: input.enabled,
+      lastRunAt: input.lastRunAt ?? null,
+    },
+  });
+}
+
+export async function markYouTubeMonitoringRun(ownerOpenId: string): Promise<void> {
+  await getDb().update(youtubeMonitoringConfigs).set({ lastRunAt: new Date() })
+    .where(eq(youtubeMonitoringConfigs.ownerOpenId, ownerOpenId));
 }
 
 export async function insertWebhookEvent(input: {

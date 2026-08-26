@@ -29,6 +29,13 @@
       "when": 1787697094102,
       "tag": "0003_military_firedrake",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1787720128793,
+      "tag": "0004_hard_paladin",
+      "breakpoints": true
     }
   ]
 }

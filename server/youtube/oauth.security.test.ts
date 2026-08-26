@@ -6,6 +6,7 @@ import {
   verifyOAuthState,
 } from "./crypto";
 import { getYouTubeConfigurationStatus } from "./config";
+import { YOUTUBE_OAUTH_SCOPES } from "./config";
 import { createOwnerAuthorizationLaunchUrl } from "./oauth";
 
 const originalEnv = { ...process.env };
@@ -59,5 +60,14 @@ describe("YouTube owner launch link", () => {
     expect(url.pathname).toBe("/api/youtube/oauth/launch");
     expect(verifyOAuthState(ticket!, "state-secret")?.ownerOpenId).toBe("owner-123");
     expect(launchUrl).not.toContain("YOUTUBE_OAUTH_CLIENT_SECRET");
+  });
+});
+
+describe("YouTube monitoring authorization", () => {
+  it("requests upload plus read-only performance and monetary analytics scopes", () => {
+    expect(YOUTUBE_OAUTH_SCOPES).toContain("youtube.upload");
+    expect(YOUTUBE_OAUTH_SCOPES).toContain("youtube.readonly");
+    expect(YOUTUBE_OAUTH_SCOPES).toContain("yt-analytics.readonly");
+    expect(YOUTUBE_OAUTH_SCOPES).toContain("yt-analytics-monetary.readonly");
   });
 });

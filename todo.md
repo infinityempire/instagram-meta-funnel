@@ -90,3 +90,23 @@
 - [ ] Verify and finish the interrupted implementation of the one-click signed OAuth launch link.
 - [ ] Restore live Express API routing so the published YouTube OAuth launch and callback paths do not fall back to static HTML.
 - [x] Use the verified low-memory build path for deployment so the Express server is included in the published release.
+- [x] Add tal.derie.td@gmail.com as a Google OAuth Test user for the Small Stories Hebrew testing app.
+- [x] Verify the Luli Moon source file and final private-upload metadata before the approved test upload.
+- [x] Implement resumable private YouTube upload with server-side refresh-token exchange and safe result logging.
+- [ ] Upload the approved Luli Moon video privately with Made for Kids and AI disclosure enabled.
+- [ ] Verify the resulting private YouTube video without changing visibility or publishing it.
+- [x] Inventory every existing vertical MP4 in the children’s-story project and classify it as ready, needs review, or not for upload.
+- [ ] Create three additional original Hebrew children’s Shorts that follow the established character and safety guidelines.
+- [ ] Upload every approved ready video as private with Made for Kids and AI disclosure metadata; do not make any video public.
+- [ ] Add a YouTube performance tracker for public-video views, retention, likes, and subscriber gains at 24-hour and 72-hour checkpoints.
+- [ ] Define data-based rules for selecting which character, hook, and story format to publish or develop next.
+- [ ] Add an idempotent Heartbeat endpoint and daily 24-hour/72-hour YouTube metrics refresh schedule, activated only after a public video exists.
+- [ ] Add database records for private/public YouTube videos, immutable upload metadata, and daily metric snapshots.
+- [ ] Add the minimum YouTube Analytics read scope and request a new owner consent only when the monitoring implementation is ready.
+- [ ] Send the owner a concise alert when a monitored public video reaches a meaningful performance or monetization milestone, without auto-publishing any content.
+- [ ] Expand the OAuth request to include read-only performance and monetary analytics scopes before the next owner reauthorization.
+- [ ] Define an experiment portfolio of recurring story worlds and new candidate worlds with a small private-test batch for each.
+- [ ] Add data-based expansion rules that prepare more private drafts only for winning children’s-story worlds.
+- [x] Add secret-safe success and failure logs to the private YouTube uploader and cover them with tests.
+- [x] Save a checked-in inventory that classifies every discovered children’s-story MP4 and records upload eligibility.
+- [x] Add an end-to-end mocked private-upload success test proving the real completion path logs no OAuth secrets.
