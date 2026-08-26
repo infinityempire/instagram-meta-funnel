@@ -106,6 +106,12 @@
 - [x] Create a complete pre-publication QA checklist recording narration, duration, visual defects, child-directed setting, and AI disclosure for each video.
 - [x] Perform audiovisual quality review for all five private children’s videos.
 - [ ] Prepare a complete, submission-ready YouTube API compliance-audit package for public publishing eligibility.
+- [ ] Submit the completed YouTube API compliance-audit form and record the official submission acknowledgement.
+- [ ] Enter only the required owner-supplied legal contact details into the official YouTube audit form without storing them in project files.
+- [ ] Publish a public privacy policy and terms-of-service page that accurately describe the internal YouTube OAuth integration for the audit form.
+- [ ] Create a 100-video Hebrew children’s-story portfolio across established and new story worlds.
+- [ ] Produce the 100-video portfolio in controlled batches with scene-level narration and visual-continuity QA.
+- [ ] Upload each QA-approved portfolio video as private with Made for Kids and AI disclosure metadata only.
 - [x] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with an established consistent daytime character design.
 - [x] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
 - [ ] Release QA-approved videos publicly after the YouTube audit removes the private-only API restriction.

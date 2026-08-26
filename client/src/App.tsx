@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import DashboardLayout from "./components/DashboardLayout";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import MetaDashboard from "./pages/MetaDashboard";
+import { PrivacyPolicy, TermsOfService } from "./pages/LegalPages";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -37,9 +38,13 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <DashboardLayout><Router /></DashboardLayout>
+      <TooltipProvider>
+        <Toaster />
+          <Switch>
+            <Route path="/privacy" component={PrivacyPolicy} />
+            <Route path="/terms" component={TermsOfService} />
+            <Route><DashboardLayout><Router /></DashboardLayout></Route>
+          </Switch>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
