@@ -119,6 +119,11 @@
 - [ ] Map each required YouTube audit evidence field to a dedicated attached document rather than relying on a single generic PDF.
 - [ ] Guide the owner to save and select the audit-evidence PDF from the device file picker when the shared browser cannot expose remaining upload inputs.
 - [ ] Expose the audit-evidence PDF through a public CORS-enabled server endpoint so the audit form can attach it reliably.
+- [ ] Find and use a compliant alternative evidence-submission path that does not require the owner to operate the device file picker.
+- [ ] Retry the completed YouTube audit form with automated evidence attachment and verify a genuine submission confirmation.
+- [ ] Prepare a sanitized Claude prompt that requests a compliant workaround for the YouTube audit form’s mandatory file-attachment behavior.
+- [ ] Prepare the three YouTube audit evidence fields so the owner can select the same PDF from the Android file picker.
+- [x] Deliver a complete, sanitized OpenHands prompt with all YouTube audit form values, evidence paths, and submission safeguards.
 - [x] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with an established consistent daytime character design.
 - [x] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
 - [ ] Release QA-approved videos publicly after the YouTube audit removes the private-only API restriction.
