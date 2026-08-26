@@ -147,3 +147,4 @@
 - [x] Produce and pass audiovisual QA for Pitsi Paints a Rainbow, using the stable two-cloud visual setup and complete Hebrew narration.
 - [x] Repair and pass audiovisual QA for Pitsi and the Brave Drop by rewriting the narration to match the calm two-character animation; retain only the corrected candidate for possible private upload.
 - [x] Produce and pass audiovisual QA for Pitsi and the Little Spark, Pitsi and the Cloud Dance, and Pitsi and the Soft Hug, completing the small Pitsi batch.
+- [x] Produce and pass audiovisual QA for the Luli and the Little Flower style pilot after replacing narration that did not match the static visual result.
