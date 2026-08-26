@@ -39,9 +39,21 @@
 5. מסמך הצ׳ק־ליסט: `docs/qa/PREPUBLICATION_QA_CHECKLIST_HE.md`.
 6. צילום מסך בדשבורד ההגדרות המציג מצב ״YouTube מחובר״, אפשרות ניתוק, וכתובת callback רשומה.
 
+### דרישות טופס שנצפו ב־26 באוגוסט 2026
+
+הטופס דורש עבור פרויקט יחיד מספר פרויקט Google Cloud, קטגוריות שימוש, הצהרה על OAuth, נפח שימוש צפוי והצדקה מפורטת. הוא מציין שאפשר לצרף קובץ ראיות יחיד קטן מ־10MB בפורמט JPEG, PNG או PDF. במסלול הנוכחי נבחרה בקשת ביקורת תאימות ומכסה, פרויקט יחיד, שימושים של העלאת וידאו, כלי יוצר, כלי פנימי וניתוח ביצועים, עם OAuth ונפח שמרני של פחות מ־1,000 בקשות ביום.
+
 ## פעולה נדרשת
 
 יש להגיש את הטופס הרשמי: https://support.google.com/youtube/contact/yt_api_form. צוות YouTube API Services יוצר קשר לאחר ההגשה.[1]
+
+### מצב מילוי הטופס — 26 באוגוסט 2026
+
+הטופס פתוח תחת חשבון Tal Derie, אך עדיין **לא התקבל אישור קבלה**. הודעת השגיאה האחרונה היא: `We couldn't submit your form yet. Please fix the fields above.` חובה לשמור את כל הסעיפים פתוחים ומלאים באותו רצף לפני הלחיצה על Submit.
+
+פרטי המילוי שנבחרו הם: Request Type = quota; הגשה כיחיד; Category = Creator Tools and Services; Independent Developer/Sole Proprietor; קהל = Individual Content Creators ו־Internal Users; Free service; No Google representative; מקור API = Google Developer Documentation; API client = Small Stories Hebrew; דפי מדיניות: `/privacy` ו־`/terms`; פרויקט `855401426442`; שימושים Video Uploading, Tools for Creators, Internal Company Tool ו־Analytics; OAuth נדרש; תחזית פחות מ־1,000 בקשות ביום; endpoints `search.list` ו־`videos.insert`; וכל ההצהרות.
+
+שלושת שדות הראיות הם Architecture Diagram, User Flow Diagrams ו־Other Supporting Materials. יש לצרף PDF או PNG/JPEG קטן מ־10MB. קובץ הראיות המוכן הוא `docs/audit/LEGAL_AND_OAUTH_EVIDENCE_EN.pdf`. ניסיון קודם צירף קובץ טקסט מדומה ולכן אינו תקף; הטופס דורש קובץ בינארי אמיתי בכל שדה הראיות הנדרש.
 
 ## מקורות
 

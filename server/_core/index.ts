@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
+import path from "path";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerStorageProxy } from "./storageProxy";
@@ -36,6 +37,15 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
   app.disable("x-powered-by");
+  app.get("/api/audit/evidence.pdf", (_req, res) => {
+    const evidencePath = path.resolve(process.cwd(), "docs/audit/LEGAL_AND_OAUTH_EVIDENCE_EN.pdf");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", 'inline; filename="small-stories-youtube-audit-evidence.pdf"');
+    res.sendFile(evidencePath, (error) => {
+      if (error && !res.headersSent) res.status(404).json({ error: "Audit evidence is unavailable" });
+    });
+  });
   // The raw route must be registered before generic JSON parsing. Meta signs
   // the exact bytes of the notification body.
   app.get("/api/meta/webhook", (req, res) => {
