@@ -109,6 +109,7 @@
 - [x] Regenerate Luli and the Bouncing Bubble’s inconsistent middle scene with an established consistent daytime character design.
 - [x] Re-run full audiovisual QA on the corrected Luli and the Bouncing Bubble version before any release.
 - [ ] Release QA-approved videos publicly after the YouTube audit removes the private-only API restriction.
+- [x] Upload the corrected Luli and the Bouncing Bubble version privately and verify its Made for Kids status.
 - [ ] Add the minimum YouTube Analytics read scope and request a new owner consent only when the monitoring implementation is ready.
 - [ ] Send the owner a concise alert when a monitored public video reaches a meaningful performance or monetization milestone, without auto-publishing any content.
 - [ ] Include estimated-revenue alerts and a reminder to review Israeli tax and VAT registration obligations with a qualified tax professional before filing.

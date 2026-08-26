@@ -37,6 +37,7 @@
 3. כתובת השירות: `https://instafunnel-lphz3bum.manus.space`.
 4. תיאור נתיבי OAuth: `/api/youtube/oauth/start`, callback מוגן ב־state, ונתיב ניתוק מבוקר.
 5. מסמך הצ׳ק־ליסט: `docs/qa/PREPUBLICATION_QA_CHECKLIST_HE.md`.
+6. צילום מסך בדשבורד ההגדרות המציג מצב ״YouTube מחובר״, אפשרות ניתוק, וכתובת callback רשומה.
 
 ## פעולה נדרשת
 
