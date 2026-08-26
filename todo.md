@@ -109,9 +109,12 @@
 - [ ] Submit the completed YouTube API compliance-audit form and record the official submission acknowledgement.
 - [ ] Enter only the required owner-supplied legal contact details into the official YouTube audit form without storing them in project files.
 - [ ] Publish a public privacy policy and terms-of-service page that accurately describe the internal YouTube OAuth integration for the audit form.
-- [ ] Create a 100-video Hebrew children’s-story portfolio across established and new story worlds.
+- [x] Create a 100-video Hebrew children’s-story portfolio across established and new story worlds.
 - [ ] Produce the 100-video portfolio in controlled batches with scene-level narration and visual-continuity QA.
 - [ ] Upload each QA-approved portfolio video as private with Made for Kids and AI disclosure metadata only.
+- [ ] Correct the failed Pitsi style episode by eliminating visual style drift and ensuring the narration fully finishes within the video.
+- [x] Correct the failed Pitsi style episode by eliminating visual style drift and ensuring the narration fully finishes within the video.
+- [x] Define ten consistent story worlds with ten short-form episode slots each for the 100-video library.
 - [ ] Verify the official YouTube audit submission acknowledgement before beginning the 100-video production batches.
 - [ ] Produce and attach the required privacy, homepage, terms, OAuth, upload-interface, and dashboard evidence for the YouTube audit form.
 - [ ] Complete the audit form’s expected API usage volume using a conservative documented estimate.
@@ -137,3 +140,6 @@
 - [x] Add secret-safe success and failure logs to the private YouTube uploader and cover them with tests.
 - [x] Save a checked-in inventory that classifies every discovered children’s-story MP4 and records upload eligibility.
 - [x] Add an end-to-end mocked private-upload success test proving the real completion path logs no OAuth secrets.
+- [x] Complete audiovisual QA for four new Pitsi pilot episodes: Pitsi and the Drop, Pitsi and the Sunbeam, Pitsi and the Flying Leaf, and Pitsi and the Little Rainbow; retain only passing candidates for potential private upload.
+- [ ] Produce Pitsi episodes 5–10 in small QA-gated batches; do not classify failed intermediate versions as upload candidates.
+- [ ] Obtain a fresh owner confirmation before uploading the four new QA-approved Pitsi episodes as private only, with Made for Kids and AI disclosure metadata.
