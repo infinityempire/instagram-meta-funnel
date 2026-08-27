@@ -175,3 +175,4 @@
 - [x] Create a private GitHub repository named instagram-meta-funnel, push the active project without secrets, and verify the remote connection.
 - [ ] Rotate the previously exposed Google OAuth client secret and other affected infrastructure secrets through their official consoles; do not record values in the project or chat.
 - [ ] Verify that project configuration and environment files are ignored and absent from GitHub-tracked history.
+- [x] Change the GitHub repository infinityempire/instagram-meta-funnel from private to public after explicit owner confirmation, then verify its visibility.
