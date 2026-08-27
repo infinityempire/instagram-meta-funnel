@@ -157,6 +157,9 @@
 - [ ] Keep YouTube audit-form entry manual; do not use script injection or automated Submit even when a VNC session cannot accept manual inputs.
 - [ ] Keep the YouTube audit process free of Playwright/Selenium or stealth techniques that attempt to hide browser automation from Google.
 - [ ] Keep all Google audit-form interaction manual; do not introduce browser automation, scripted clicks, or automated typing for form completion.
+- [ ] Do not use Playwright or Selenium to automate the owner’s Google audit form, even when operated locally by the owner.
+- [ ] Do not adopt Chrome Remote Debugging, Browser-use, or third-party browser-control extensions to automate the YouTube audit form or evade Google bot protections.
+- [ ] Complete any renewed audit-form attempt through one direct, owner-controlled browser session; do not resume VNC experiments or browser-automation attempts.
 - [ ] Permit any OpenHands work on the shared VNC session only to restore scrolling or input delivery, never to modify, auto-fill, upload evidence to, attest to, or submit the Google audit form.
 - [ ] Guide the owner through the official audit form one field at a time in the regular browser, without asking the owner to navigate the full form independently.
 - [ ] If the owner uses Text Blaze, limit it to owner-triggered insertion of reviewed technical text; do not use it for personal data, evidence selection, legal attestations, submission, or evasion of Google checks.
