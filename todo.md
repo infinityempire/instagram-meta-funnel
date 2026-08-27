@@ -172,3 +172,4 @@
 - [ ] Resolve the discrepancy between the external agent’s claimed audit-form submission and the owner’s missing Google verification email before treating the audit as submitted.
 - [x] Treat the YouTube audit submission as unverified after the OpenHands VNC environment reset; require a genuine confirmation email or other official receipt before any status change.
 - [x] Record the audit form as potentially corrected but unverified: the Google Cloud Project Number may be correct, while final submission still requires an official receipt.
+- [ ] Create a private GitHub repository named instagram-meta-funnel, push the active project without secrets, and verify the remote connection.

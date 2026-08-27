@@ -1,0 +1,406 @@
+מדריך מלא לטופס YouTube API Services — Compliance Audit / Quota
+עודכן: 27 באוגוסט 2026
+
+כתובת הטופס הרשמי:
+https://support.google.com/youtube/contact/yt_api_form
+
+================================================================
+1. מהו הטופס הזה ולמה הוא נחוץ
+================================================================
+
+זהו טופס רשמי של YouTube API Services. מטרתו להסביר לגוגל איך
+האפליקציה משתמשת ב־YouTube Data API, אילו הרשאות OAuth היא מבקשת,
+איך היא שומרת מידע, ואילו פעולות היא מבצעת בערוץ YouTube.
+
+במקרה של Small Stories Hebrew, האפליקציה היא כלי פנימי של בעל ערוץ
+אחד. היא מעלה סרטוני ילדים מקוריים בעברית דרך ה־API הרשמי, שומרת
+אותם כ־Private כברירת מחדל, מנהלת את המטא־דאטה של הערוץ עצמו, וקוראת
+נתוני ביצועים של אותו בעל ערוץ בלבד.
+
+חשוב: הטופס אינו מבטיח אישור, הגדלת מכסה, או אפשרות לפרסם סרטונים
+לציבור. רק Google / YouTube יכולים לאשר את הבקשה. עד שתתקבל תשובה
+רשמית, אין לשנות נראות של סרטונים ל־Public דרך ה־API.
+
+מצב הבקשה כרגע: לא מאומת. היה דיווח מסוכן חיצוני על מסך קבלה, אבל
+לא התקבלה ראיית קבלה עצמאית או הודעת אימות רשמית אצל בעל החשבון.
+לכן אין להציג את הבקשה כ"הוגשה" ואין ללחוץ שוב על Submit בלי החלטה
+מודעת של בעל החשבון במסך הפעיל שלו.
+
+================================================================
+2. לפני שמתחילים
+================================================================
+
+1. פתח את הטופס ב־Chrome הרגיל שלך, כאשר אתה מחובר לחשבון Google
+   שבבעלותו פרויקט Google Cloud של YouTube.
+
+2. ודא בראש הדפדפן שאתה מחובר לחשבון הנכון. אין למלא את הטופס דרך
+   חשבון מותג נפרד, חשבון שאינו בעל הפרויקט, או חלון גלישה פרטי.
+
+3. פתח את הקישור למדיניות הפרטיות ואת הקישור לתנאי השימוש ובדוק שהם
+   נפתחים:
+   https://instafunnel-lphz3bum.manus.space/privacy
+   https://instafunnel-lphz3bum.manus.space/terms
+
+4. אל תמסור סיסמה, קוד SMS, קוד אימות דו־שלבי, Client Secret,
+   refresh token או מפתח API באף שדה בטופס ובאף צ'אט.
+
+5. מלא את הטופס בעצמך. בחירת קבצים, פרטי קשר, סימון הצהרות ולחיצה
+   על Submit הם פעולות של בעל החשבון בלבד. אין להשתמש ב־Playwright,
+   Selenium, RPA, VNC, Script Injection או תוסף Auto-Fill כדי למלא,
+   לצרף או לשלוח את טופס Google.
+
+6. שמות השדות בטופס יכולים להשתנות מעט. השתמש בערכים שלהלן רק מול
+   השדה המקביל שמופיע בפועל במסך שלך; אל תנחש ואל תוסיף שדות שאינם
+   קיימים.
+
+================================================================
+3. הערכים הקבועים של הפרויקט
+================================================================
+
+שם השירות / האפליקציה:
+Small Stories Hebrew Uploader
+
+כתובת האתר:
+https://instafunnel-lphz3bum.manus.space/
+
+כתובת מדיניות הפרטיות:
+https://instafunnel-lphz3bum.manus.space/privacy
+
+כתובת תנאי השימוש:
+https://instafunnel-lphz3bum.manus.space/terms
+
+Google Cloud Project ID:
+tal-derie-youtube-upload
+
+Google Cloud Project Number:
+855401426442
+
+סוג OAuth client:
+Web application
+
+שם OAuth client:
+Small Stories Hebrew Uploader
+
+Redirect URI:
+https://instafunnel-lphz3bum.manus.space/api/youtube/oauth/callback
+
+================================================================
+4. מילוי לפי סעיפי הטופס
+================================================================
+
+----------------------------------------------------------------
+סעיף 1 — Request Type
+----------------------------------------------------------------
+
+בחר את האפשרות הקרובה ביותר לנוסח:
+Complete a compliance audit to request for additional quota
+
+הסבר: זו בקשת ביקורת תאימות עבור שימוש ב־YouTube API ובקשת מכסה
+שמרנית. אין לבקש 50,000 או מספר גדול אחר ללא צורך תפעולי אמיתי,
+מתועד ומאומת.
+
+אם הטופס מפריד בין ביקורת תאימות לבין בקשת מכסה, בחר בביקורת התאימות
+ובמכסה המתאימה לפרויקט. אם קיימת שאלה מפורשת "Do you need quota above
+the default?" והמספר המבוקש הוא 10,000 יחידות ליום בלבד, בחר "No" —
+כי 10,000 היא מכסה שמרנית/סטנדרטית. אל תסמן בקשה למכסה מעל ברירת
+המחדל רק כדי להגדיל סיכוי לאישור.
+
+----------------------------------------------------------------
+סעיף 2 — Organization and Contact
+----------------------------------------------------------------
+
+Apply as:
+As an individual user
+
+Organization Legal Name:
+self
+
+הערה חשובה: כתוב "self" רק אם אתה באמת מגיש כיחיד ואין לך חברה
+רשומה שמפעילה את השירות. אם יש שם משפטי רשום של עסק או חברה, כתוב
+את השם המשפטי האמיתי שלו במקום self.
+
+Parent Company Name:
+self
+
+גם כאן: אם אין חברת־אם, self מתאים. אם יש חברת־אם ממשית, יש לרשום
+את שמה המשפטי האמיתי.
+
+Website:
+https://instafunnel-lphz3bum.manus.space/
+
+Category:
+Creator Tools and Services
+
+Organization Size or Type:
+Independent Developer / Sole Proprietor
+
+Primary Technical Contact:
+Same as Primary Contact (Name and Email)
+
+Primary Business Contact:
+Same as Primary Contact (Name and Email)
+
+הפרטים האישיים שאותם אתה ממלא בעצמך בשדות המתאימים:
+- Full legal name: השם החוקי המלא שלך בדיוק כפי שהוא מופיע במסמכים.
+- Email: כתובת הדוא"ל שאתה קורא ושאליה אתה רוצה לקבל תשובה רשמית.
+- Phone: מספר טלפון פעיל של איש הקשר.
+- Street address, City, State/Province, Postal Code, Country: כתובת
+  מלאה ואמיתית של איש הקשר או הישות המשפטית.
+
+אל תשתמש בפרטים מומצאים, בכתובת חלקית או בכתובת של צד שלישי. פרטים
+אלה אינם נשמרים במסמכי הפרויקט ולא נדרשים להדבקה כאן.
+
+----------------------------------------------------------------
+סעיף 3 — Business Model and Product Description
+----------------------------------------------------------------
+
+Target audience:
+Individual Content Creators; Internal Users
+
+Monetization:
+Free service (we do not charge users)
+
+Does the application display ads on YouTube content?
+No
+
+Do you have a Google / YouTube representative?
+No, I do not have a Google representative
+
+How did you discover the API?
+Google Developer Documentation
+
+תיאור השירות להדבקה בשדה ההסבר:
+
+Small Stories Hebrew is an internal creator tool for a single owner. It uses the official YouTube Data API through OAuth to upload original Hebrew children’s short-form videos, keep uploads private by default, manage only the owner’s own video metadata, and read the owner’s own video performance data. It is not a public SaaS product, does not provide API access to third parties, does not sell YouTube data, and does not expose other creators’ account data.
+
+אם יש שדה "Does your application use or show YouTube content for
+advertising?", התשובה היא No. הכלי אינו רשת פרסום, אינו מוכר נתונים,
+ואינו מציג פרסומות על גבי תוכן YouTube.
+
+----------------------------------------------------------------
+סעיף 4 — API Client Overview
+----------------------------------------------------------------
+
+API Client Name:
+Small Stories Hebrew Uploader
+
+API Client Type:
+Web application
+
+Primary Access URL / Website:
+https://instafunnel-lphz3bum.manus.space/
+
+Privacy Policy URL:
+https://instafunnel-lphz3bum.manus.space/privacy
+
+Terms of Service URL:
+https://instafunnel-lphz3bum.manus.space/terms
+
+OAuth Redirect / Callback URL:
+https://instafunnel-lphz3bum.manus.space/api/youtube/oauth/callback
+
+Does the API client name include the word "YouTube"?
+No
+
+Is your API client publicly accessible?
+No — it is a private internal tool for one owner. The public website only
+exposes policy pages; it does not provide a public multi-user YouTube API
+service.
+
+אם הטופס שואל על מוצר ציבורי, אין לטעון שהכלי הוא SaaS פתוח, Marketplace,
+Agency Platform או כלי לניהול ערוצים של צדדים שלישיים. כל אחד מהתיאורים
+האלה אינו נכון עבור השירות הנוכחי.
+
+----------------------------------------------------------------
+סעיף 5 — Project, OAuth, Use Cases and Quota
+----------------------------------------------------------------
+
+מספר הפרויקטים:
+1
+
+Project 1 — Google Cloud Project ID:
+tal-derie-youtube-upload
+
+Project 1 — Google Cloud Project Number:
+855401426442
+
+Do users need to sign in with Google OAuth?
+Yes
+
+הסבר OAuth:
+הבעלים נותן הרשאה ל־Google OAuth עבור הערוץ שלו בלבד. השרת משתמש
+ב־refresh token מוצפן בצד השרת לצורך הפעולות שאושרו, מאפשר ניתוק
+מבוקר, ואינו מבקש או שומר סיסמאות או קודי אימות.
+
+הרשאות OAuth הפעילות:
+- youtube.upload
+- youtube.readonly
+- yt-analytics.readonly
+- yt-analytics-monetary.readonly
+
+בחר רק את קטגוריות השימוש המתאימות בפועל, בנוסח הקרוב ביותר שקיים
+בטופס:
+- Video Uploading & Account Management
+- Tools for Creators
+- Internal Company Tool
+- Analytics & Reporting
+
+אל תבחר:
+- Brand Deals & Influencer Search
+- Advertising
+- Influencer Marketplace
+- שימושים אחרים שאינם מיושמים במערכת
+
+פעולות API בפועל:
+- videos.insert: יצירת העלאה resumable של קובץ MP4.
+- videos.list: אימות מצב הסרטון לאחר העלאה, לרבות private status ו־Made for Kids.
+- קריאות Analytics רשמיות: קריאת מדדי הביצועים של בעל הערוץ בלבד.
+
+לא נעשה שימוש ב־search.list לצורך מוצר זה. אין לבחור אותו אם הטופס
+מבקש רשימת endpoints בשימוש.
+
+Visibility / publication policy:
+Uploads are private by default. Public visibility changes require explicit
+owner approval and are not automated.
+
+Child-directed and AI-content policy:
+Every uploaded children’s video is marked Made for Kids. AI-generated or
+AI-modified media is disclosed where required.
+
+Expected API requests:
+Fewer than 1,000 API requests per day
+
+Requested daily quota:
+10,000 quota units per day
+
+Peak requests:
+Up to 1,000 requests per day, low and controlled volume
+
+Detailed quota justification to paste:
+
+Planned usage is small and controlled: a few private original-video uploads per day with low-volume status verification and owner-only analytics reads. The requested quota is the conservative 10,000 units per day.
+
+אם יש שדה מפורט יותר על אבטחה, אפשר להדביק את הטקסט הבא:
+
+The service uses official Google OAuth. Refresh tokens are encrypted at rest on the server, OAuth state is signed and short-lived, the owner can disconnect and revoke access, and application logs do not contain OAuth secrets. The service manages only the owner’s own YouTube channel data and does not expose data to third parties.
+
+----------------------------------------------------------------
+סעיף 6 — Evidence / Supporting Documents
+----------------------------------------------------------------
+
+הטופס עשוי להציג מספר שונה של שדות קבצים בהתאם לחשבון ולזרימה.
+אל תניח שיש תמיד שדה אחד, שלושה או ארבעה. צרף קובץ אמיתי, קטן מ־10MB,
+באמצעות בוחר הקבצים הרגיל, לכל שדה חובה שמופיע בפועל.
+
+אין לצרף קובץ .txt שמתחזה ל־PDF, אין לצרף קובץ ריק, ואין להשתמש
+באוטומציה כדי לבחור קובץ.
+
+קובץ הראיות המרכזי המאומת שקיים בפרויקט:
+/home/ubuntu/instagram-meta-funnel/docs/audit/LEGAL_AND_OAUTH_EVIDENCE_EN.pdf
+
+אם בטופס פעילים ארבעה שדות ראיות ייעודיים, מפת הראיות המתוכננת היא:
+
+1. Required evidence / System evidence
+   קובץ ייעודי: 01_system_evidence.pdf
+   תוכן: OAuth רשמי, ברירת מחדל Private, Made for Kids, הצפנת token,
+   אפשרות ניתוק, והגנת ההעלאה.
+
+2. Homepage screenshot
+   קובץ ייעודי: 02_public_service_and_policy_evidence.pdf
+   תוכן: כתובת השירות ודף מדיניות הפרטיות. צילום מסך של דף התחברות
+   או שלד פרטי בלבד אינו ראיה מספיקה.
+
+3. Terms of Service
+   קובץ ייעודי: 03_terms_of_service_evidence.pdf
+   תוכן: תנאי השימוש הציבוריים בכתובת:
+   https://instafunnel-lphz3bum.manus.space/terms
+
+4. OAuth flow screenshot
+   קובץ ייעודי: 04_oauth_flow_evidence.pdf
+   תוכן: state חתום, callback, החלפת authorization code, הצפנת refresh
+   token, ניתוק, והעלאה פרטית בלבד.
+
+בדיקה חשובה לפני בחירה: בקבצים הזמינים כעת בתיקיית הפרויקט אומת קובץ
+הראיות הכללי LEGAL_AND_OAUTH_EVIDENCE_EN.pdf. אם ארבעת קובצי הראיות
+הייעודיים אינם זמינים אצלך, עצור לפני ההגשה. אין להמציא להם שמות או
+להעלות קבצים חלופיים לא קשורים. אפשר לצרף את הקובץ הכללי רק בשדה שבו
+הוא מתאים באמת, או להכין/לאתר את הקבצים הייעודיים הרלוונטיים לפני המשך.
+
+שדות ישנים שדווחו בחלק מהגרסאות של הטופס:
+- Architecture Diagram
+- User Flow Diagrams
+- Other Supporting Materials
+
+אם אלו השדות שמופיעים אצלך, בחר בקובץ הראיות האמיתי המתאים דרך הבוחר
+הרגיל. אם אותו PDF מתאים לכל אחד מהשדות לפי תוכנו ולפי דרישות הטופס,
+אפשר לבחור אותו ידנית שוב; אם השדה מבקש ראיה מסוג אחר, השתמש בקובץ
+הייעודי המתאים.
+
+----------------------------------------------------------------
+סעיף 7 ומעלה — Attestations / Acknowledgements / Submit
+----------------------------------------------------------------
+
+קרא כל הצהרה שמוצגת במסך שלך. סמן אותה רק אם היא נכונה עבורך בפועל.
+
+בדרך כלל ההצהרות מתייחסות לכך ש:
+- המידע בטופס נכון ומלא.
+- אתה מוסמך להגיש עבור הפרויקט והחשבון.
+- השימוש ב־API עומד במדיניות YouTube API Services.
+- לא תעשה שימוש אסור בנתוני YouTube או בהרשאות OAuth.
+- תסכים לפעול לפי תנאי השירות והמדיניות הרלוונטיים.
+
+אל תבקש מאדם אחר לסמן הצהרה משפטית בשמך, ואל תסמן הצהרה שלא קראת או
+שאינך בטוח בה. לאחר שכל שדות החובה מלאים וקבצי הראיות מופיעים כשמות
+קבצים מצורפים בתוך הטופס, אפשר ללחוץ Submit בעצמך בלבד.
+
+================================================================
+5. בדיקה לפני לחיצה על Submit
+================================================================
+
+עבור על הרשימה הזו פעם אחת:
+
+[ ] מחובר לחשבון Google שבעל פרויקט Google Cloud.
+[ ] Project ID: tal-derie-youtube-upload.
+[ ] Project Number: 855401426442.
+[ ] שם הלקוח: Small Stories Hebrew Uploader.
+[ ] Redirect URI זהה במדויק לכתובת במסמך.
+[ ] דפי Privacy ו־Terms נפתחים.
+[ ] הוגדר כלי פנימי לבעלים יחיד, לא SaaS ציבורי.
+[ ] נבחרו Video Uploading, Tools for Creators, Internal Company Tool ו־Analytics בלבד.
+[ ] לא נבחרו Brand Deals, Influencer Search או Advertising.
+[ ] הוזנו פחות מ־1,000 בקשות ביום ו־10,000 יחידות quota ביום בלבד.
+[ ] הוזן תיאור השירות והצדקת המכסה בלי הבטחות לא נכונות.
+[ ] צורפו קובצי ראיות אמיתיים בכל שדה חובה שמופיע בפועל.
+[ ] השם, הכתובת, הדוא"ל והטלפון הם שלך/של הישות האמיתית ומדויקים.
+[ ] קראת כל הצהרה וסימנת רק מה שנכון.
+
+================================================================
+6. מה נחשב הוכחה שהטופס הוגש
+================================================================
+
+הוכחה תקפה היא אחד מהבאים:
+1. מסך קבלה אותנטי שמופיע לאחר Submit תחת החשבון שלך.
+2. הודעת אישור רשמית מ־Google / YouTube שמגיעה לתיבת הדוא"ל של איש
+   הקשר, כולל Inbox, Spam ו־All Mail.
+
+טקסט כללי שמופיע בדף ציבורי, טיוטה בסשן דפדפן זמני, הודעה מסוכן חיצוני,
+או צילום מסך לא מאומת — אינם הוכחת הגשה מספקת.
+
+אם הטופס אומר "Please fix the fields above", חזור למעלה וחפש כל שדה
+עם הודעת שגיאה. אין ללחוץ Submit שוב ושוב. קודם תקן את השדות החסרים,
+ודא שהקבצים הסתיימו להיטען ושכל סעיף נותר פתוח ומלא.
+
+================================================================
+7. מקורות רשמיים
+================================================================
+
+YouTube API quota and compliance audits:
+https://developers.google.com/youtube/v3/guides/quota_and_compliance_audits
+
+YouTube Data API videos resource:
+https://developers.google.com/youtube/v3/docs/videos
+
+YouTube API Services Developer Policies:
+https://developers.google.com/youtube/terms/developer-policies
+
+סוף המדריך.
