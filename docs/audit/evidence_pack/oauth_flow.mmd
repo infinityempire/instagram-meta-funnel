@@ -1,0 +1,9 @@
+flowchart LR
+    A[Channel Owner] -->|Starts authorization| B[Small Stories Hebrew]
+    B -->|Signed short-lived state| C[Google OAuth]
+    C -->|Authorization code and state| D[Protected callback]
+    D -->|Validates state| E[Server-side code exchange]
+    E -->|Encrypts refresh token| F[Encrypted connection record]
+    F -->|Owner-approved private upload| G[YouTube Data API]
+    A -->|Disconnect control| H[Revoke authorization and remove record]
+    F --> H

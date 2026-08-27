@@ -57,6 +57,12 @@
 
 טיוטה שמולאה בסשן דפדפן זמני או תחת חשבון אחר אינה הופכת לקישור "מוכן" ואינה בהכרח נשמרת. אם הבעלים פותח טופס ריק, יש למלא אותו מחדש במסך הפעיל שלו; אין להציג זאת כהגשה או כטיוטה שמורה.
 
+### סביבת noVNC שסופקה ב־27 באוגוסט 2026
+
+הבעלים סיפק קישור לסביבת noVNC של טופס הביקורת ואישר השלמת פרטים, סימון הצהרות והגשה לאחר בדיקה. הסביבה התחברה בהצפנה, אך בבדיקה הראשונית הקנבס עדיין הציג מצב טעינה ולא הוצג תוכן הטופס. אין להסיק הגשה או לבצע מילוי לפני שתוכן הטופס מופיע ונבדק בפועל.
+
+בבדיקה הבאה הופיע הטופס, ובסעיף קטגוריות השימוש נראו ערכי ברירת־מחדל שגויים: מזהה הדוגמה `my-youtube-app-project-id`, קטגוריית **Brand Deals & Influencer Search** מסומנת ו־**Video Uploading & Account Management** אינה מסומנת. לפני הגשה יש לתקן את המזהה למזהה הפרויקט האמיתי, להסיר את קטגוריית Brand Deals, ולסמן Video Uploading לצד Tools for Creators בלבד; אין לסמן קטגוריות פרסום או חיפוש משפיענים שאינן מיושמות בשירות.
+
 ב־26 באוגוסט 2026 נבדק שדף תנאי השימוש הציבורי זמין ב־`https://instafunnel-lphz3bum.manus.space/terms`. יש להזין בטופס את כתובות המדיניות הציבוריות רק לאחר שהבעלים בודק שהן מתאימות לפרטי השירות.
 
 פרטי המילוי שנבחרו הם: Request Type = quota; הגשה כיחיד; Category = Creator Tools and Services; Independent Developer/Sole Proprietor; קהל = Individual Content Creators ו־Internal Users; Free service; No Google representative; מקור API = Google Developer Documentation; API client = Small Stories Hebrew; דפי מדיניות: `/privacy` ו־`/terms`; פרויקט `855401426442`; שימושים Video Uploading, Tools for Creators, Internal Company Tool ו־Analytics; OAuth נדרש; תחזית פחות מ־1,000 בקשות ביום; endpoints `search.list` ו־`videos.insert`; וכל ההצהרות.

@@ -153,3 +153,8 @@
 - [x] Produce and pass audiovisual QA for the Luli and the Little Flower style pilot after replacing narration that did not match the static visual result.
 - [x] Produce and pass audiovisual QA for Luli and the Golden Leaf, preserving the tested Luli character design and a matching Hebrew narration.
 - [ ] Keep the YouTube compliance-audit workflow manual; do not use third-party RPA, Auto-Fill, or shortcut extensions to simulate normal typing, select evidence, accept attestations, or submit the Google form.
+- [ ] Refresh the sanitized OpenHands audit-form prompt so it reflects the current seven-section form and stops before login, file selection, attestations, or submission.
+- [ ] Keep YouTube audit-form entry manual; do not use script injection or automated Submit even when a VNC session cannot accept manual inputs.
+- [ ] Keep the YouTube audit process free of Playwright/Selenium or stealth techniques that attempt to hide browser automation from Google.
+- [x] Prepare four separate real evidence files for the project-specific YouTube audit uploads: system evidence, public homepage evidence, Terms of Service evidence, and OAuth-flow evidence.
+- [ ] Inspect the owner-provided audit-form session, complete only confirmed missing fields, and verify the official post-submission receipt after the owner-approved submission.
