@@ -156,5 +156,14 @@
 - [ ] Refresh the sanitized OpenHands audit-form prompt so it reflects the current seven-section form and stops before login, file selection, attestations, or submission.
 - [ ] Keep YouTube audit-form entry manual; do not use script injection or automated Submit even when a VNC session cannot accept manual inputs.
 - [ ] Keep the YouTube audit process free of Playwright/Selenium or stealth techniques that attempt to hide browser automation from Google.
+- [ ] Permit any OpenHands work on the shared VNC session only to restore scrolling or input delivery, never to modify, auto-fill, upload evidence to, attest to, or submit the Google audit form.
+- [ ] Guide the owner through the official audit form one field at a time in the regular browser, without asking the owner to navigate the full form independently.
+- [ ] If the owner uses Text Blaze, limit it to owner-triggered insertion of reviewed technical text; do not use it for personal data, evidence selection, legal attestations, submission, or evasion of Google checks.
+- [ ] Use no remote-browser or persistent-session claim for the owner’s regular browser; guide technical text entry only through owner-triggered snippets and manual review.
+- [ ] Check whether an official user-browser connection is available for safe audit-form assistance before proposing any alternative browser-control workflow.
+- [ ] Record that the available browser connection currently opens a separate Sandbox session rather than the owner’s active browser; do not claim remote browser control is available.
 - [x] Prepare four separate real evidence files for the project-specific YouTube audit uploads: system evidence, public homepage evidence, Terms of Service evidence, and OAuth-flow evidence.
 - [ ] Inspect the owner-provided audit-form session, complete only confirmed missing fields, and verify the official post-submission receipt after the owner-approved submission.
+- [ ] Resolve the discrepancy between the external agent’s claimed audit-form submission and the owner’s missing Google verification email before treating the audit as submitted.
+- [ ] Treat the YouTube audit submission as unverified after the OpenHands VNC environment reset; require a genuine confirmation email or other official receipt before any status change.
+- [ ] Record the audit form as potentially corrected but unverified: the Google Cloud Project Number may be correct, while final submission still requires an official receipt.
