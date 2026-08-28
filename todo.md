@@ -176,3 +176,5 @@
 - [ ] Rotate the previously exposed Google OAuth client secret and other affected infrastructure secrets through their official consoles; do not record values in the project or chat.
 - [ ] Verify that project configuration and environment files are ignored and absent from GitHub-tracked history.
 - [x] Change the GitHub repository infinityempire/instagram-meta-funnel from private to public after explicit owner confirmation, then verify its visibility.
+- [x] Prepare an evidence-backed reply to the latest YouTube API Services email with a real upload-flow reference/script and a real sample report of retrieved YouTube API data; do not fabricate metrics or submit on the owner’s behalf.
+- [x] Verify the official YouTube reply thread and preserve the seven-business-day response constraint in the audit documentation.
